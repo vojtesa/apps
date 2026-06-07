@@ -170,6 +170,7 @@ export class StripeWebhookManager {
       return ok({ secret, id });
     } catch (e) {
       this.logger.warn("Error creating webhook", { error: e });
+      console.error("STRIPE WEBHOOK ERROR RAW:", JSON.stringify(e, Object.getOwnPropertyNames(e), 2));
 
       if (e instanceof InvalidDataError) {
         captureException(e);
@@ -179,7 +180,7 @@ export class StripeWebhookManager {
 
       // todo handle exact errors
       return err(
-        new CantCreateWebhookError("Error creating webhook", {
+        new CantCreateWebhookError("Error creating webhook: " + String((e as any)?.message ?? e), {
           cause: e,
         }),
       );

@@ -83,9 +83,43 @@ export class WebhookParams {
     url: string,
   ): Result<WebhookParams, InstanceType<typeof WebhookParams.ParsingError>> {
     try {
-      const { searchParams } = new URL(url);
+      const parsedUrl = new URL(url);
+      const pathParts = parsedUrl.pathname.split("/").filter(Boolean);
 
-      // Inner error will be caught by catch and remapped
+      // New format: /api/webhooks/stripe/{saleorApiUrl}/{configurationId}/{appId}
+      // saleorApiUrl is URL-encoded
+      if (pathParts.length >= 6 && pathParts[pathParts.length - 5] === "api") {
+        const encodedSaleorApiUrl = pathParts[pathParts.length - 3];
+        const saleorApiUrlRaw = decodeURIComponent(encodedSaleorApiUrl);
+        const configurationId = pathParts[pathParts.length - 2];
+        const rawAppId = pathParts[pathParts.length - 1];
+
+        const saleorApiUrlVo = createSaleorApiUrl(saleorApiUrlRaw);
+        if (saleorApiUrlVo.isErr()) {
+          throw new BaseError("Invalid saleorApiUrl in webhook path");
+        }
+
+        const parsedAppId = z.string().min(3).safeParse(rawAppId);
+        if (!parsedAppId.success) {
+          throw new BaseError("Invalid appId in webhook path");
+        }
+
+        const parsedUUID = z.string().uuid().safeParse(configurationId);
+        if (!parsedUUID.success) {
+          throw new BaseError("Invalid configurationId in webhook path");
+        }
+
+        return ok(
+          new WebhookParams({
+            saleorApiUrl: saleorApiUrlVo.value,
+            configurationId,
+            appId: parsedAppId.data,
+          }),
+        );
+      }
+
+      // Old format: query params
+      const { searchParams } = parsedUrl;
       const saleorApiUrlVo = this.getSaleorApiUrlOrThrow(searchParams);
       const channelId = this.getConfigurationIdOrThrow(searchParams);
       const appId = this.getAppIdOrThrow(searchParams);
@@ -101,7 +135,6 @@ export class WebhookParams {
       return err(
         new WebhookParams.ParsingError("Cant parse Stripe incoming webhook URL", {
           cause: error,
-          // TODO: Print url but ensure no secrets
         }),
       );
     }

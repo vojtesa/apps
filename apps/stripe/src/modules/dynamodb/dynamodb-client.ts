@@ -37,6 +37,7 @@ export const createDynamoDBClient = (opts: DynamoDBClientOptions) => {
   }
 
   const client = new DynamoDBClient({
+    endpoint: process.env.AWS_ENDPOINT_URL,
     requestHandler: {
       requestTimeout: opts.requestTimeout,
       connectionTimeout: opts.connectionTimeout,

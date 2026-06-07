@@ -23,12 +23,18 @@ export class GetStripeConfigsListTrpcHandler {
   private getFrontendConfigWithWebhookStatus = async (
     config: StripeConfig,
   ): Promise<StripeFrontendConfig> => {
+    const frontendConfig = StripeFrontendConfig.createFromStripeConfig(config);
+
+    if (config.webhookId === "wh_local_dev") {
+      frontendConfig.webhookStatus = "active";
+
+      return frontendConfig;
+    }
+
     const webhookResult = await this.webhookManager.getWebhook({
       webhookId: config.webhookId,
       restrictedKey: config.restrictedKey,
     });
-
-    const frontendConfig = StripeFrontendConfig.createFromStripeConfig(config);
 
     if (webhookResult.isErr()) {
       frontendConfig.webhookStatus = "missing";

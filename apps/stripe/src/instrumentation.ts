@@ -2,6 +2,11 @@
 import type { Instrumentation } from "next";
 
 export const register = async () => {
+  if (process.env.NEXT_RUNTIME === "nodejs") {
+    const { ensureDynamoTable } = await import("./instrumentations/dynamodb-setup");
+    await ensureDynamoTable();
+  }
+
   if (process.env.NEXT_RUNTIME === "nodejs" && process.env.OTEL_ENABLED === "true") {
     await import("./instrumentations/otel-node");
   }

@@ -11,17 +11,11 @@ import { BaseError } from "@/lib/errors";
 export class StripeWebhookUrlBuilder {
   buildUrl({ appUrl, webhookParams }: { appUrl: string; webhookParams: WebhookParams }) {
     try {
-      const webhookUrl = new URL(appUrl + "/api/webhooks/stripe");
-
-      webhookUrl.searchParams.set(
-        WebhookParams.configurationIdIdSearchParam,
-        webhookParams.configurationId,
+      const encodedSaleorApiUrl = encodeURIComponent(webhookParams.saleorApiUrl);
+      const webhookUrl = new URL(
+        appUrl +
+          `/api/webhooks/stripe/${encodedSaleorApiUrl}/${webhookParams.configurationId}/${webhookParams.appId}`,
       );
-      webhookUrl.searchParams.set(
-        WebhookParams.saleorApiUrlSearchParam,
-        webhookParams.saleorApiUrl,
-      );
-      webhookUrl.searchParams.set(WebhookParams.appIdSearchParam, webhookParams.appId);
 
       return ok(webhookUrl.toString());
     } catch (e) {

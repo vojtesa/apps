@@ -20,7 +20,6 @@ export class StripeClient {
   static createFromRestrictedKey(key: StripeRestrictedKey) {
     const nativeClient = new Stripe(key, {
       typescript: true,
-      httpClient: Stripe.createFetchHttpClient(fetch), // this allow us to mock the fetch
       apiVersion: STRIPE_API_VERSION,
       appInfo: {
         name: "Saleor App Stripe",

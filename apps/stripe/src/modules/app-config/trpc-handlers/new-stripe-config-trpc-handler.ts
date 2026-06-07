@@ -93,30 +93,41 @@ export class NewStripeConfigTrpcHandler {
         });
       }
 
-      const webhookCreationResult = await this.webhookManager.createWebhook(
-        {
-          name: configValidation.value.name,
-          restrictedKey: configValidation.value.restrictedKey,
-          publishableKey: configValidation.value.publishableKey,
-          configurationId: configId,
-        },
-        {
-          saleorApiUrl: saleorApiUrl.value,
-          appUrl: ctx.appUrl,
-          appId: ctx.appId,
-        },
-      );
+      let stripeWebhookId: string;
+      let rawStripeWebhookSecret: string;
 
-      if (webhookCreationResult.isErr()) {
-        // todo map errors
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message:
-            "Failed to create Stripe webhook. Please validate your credentials or contact support.",
-        });
+      if (process.env.ENV === "local") {
+        // Local dev: skip webhook creation, use Stripe CLI instead
+        stripeWebhookId = "wh_local_dev";
+        rawStripeWebhookSecret = "whsec_local_dev_placeholder";
+        console.log("SKIPPING STRIPE WEBHOOK CREATION (local dev); use Stripe CLI for webhooks");
+      } else {
+        const webhookCreationResult = await this.webhookManager.createWebhook(
+          {
+            name: configValidation.value.name,
+            restrictedKey: configValidation.value.restrictedKey,
+            publishableKey: configValidation.value.publishableKey,
+            configurationId: configId,
+          },
+          {
+            saleorApiUrl: saleorApiUrl.value,
+            appUrl: ctx.appUrl,
+            appId: ctx.appId,
+          },
+        );
+
+        if (webhookCreationResult.isErr()) {
+          // todo map errors
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: webhookCreationResult.error.message.slice(0, 300),
+          });
+        }
+
+        const result = webhookCreationResult.value;
+        stripeWebhookId = result.id;
+        rawStripeWebhookSecret = result.secret;
       }
-
-      const { secret: rawStripeWebhookSecret, id: stripeWebhookId } = webhookCreationResult.value;
 
       const stripeWebhookSecretVo = createStripeWebhookSecret(rawStripeWebhookSecret);
 
