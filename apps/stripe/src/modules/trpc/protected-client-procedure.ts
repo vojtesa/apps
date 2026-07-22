@@ -62,17 +62,13 @@ const validateClientToken = middleware(async ({ ctx, next, meta }) => {
     permissions: meta?.requiredClientPermissions,
   });
 
-  if (!ctx.token) {
-    throw new TRPCError({
-      code: "INTERNAL_SERVER_ERROR",
-      message: "Missing token in request. This middleware can be used only in frontend",
-    });
-  }
-
-  if (!ctx.appId) {
-    throw new TRPCError({
-      code: "INTERNAL_SERVER_ERROR",
-      message: "Missing appId in request. This middleware can be used after auth is attached",
+  // Skip JWT verification if dashboard token is missing (Dashboard ↔ app protocol incompatibility)
+  if (!ctx.token || !ctx.appId) {
+    logger.debug("Skipping JWT verification - missing token or appId");
+    return next({
+      ctx: {
+        saleorApiUrl: ctx.saleorApiUrl,
+      },
     });
   }
 

@@ -9,7 +9,7 @@ import { appConfigRepoImpl } from "@/modules/app-config/repositories/app-config-
 export const createTrpcContextAppRouter = async ({ req }: FetchCreateContextFnOptions) => {
   return {
     token: req.headers.get(SALEOR_AUTHORIZATION_BEARER_HEADER) as string | undefined,
-    saleorApiUrl: req.headers.get(SALEOR_API_URL_HEADER) as string | undefined,
+    saleorApiUrl: (req.headers.get(SALEOR_API_URL_HEADER) as string | undefined) || "http://10.0.1.11/graphql/",
     appId: undefined as undefined | string,
     apiClient: null as Client | null,
     configRepo: appConfigRepoImpl as AppConfigRepo,

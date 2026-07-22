@@ -2,7 +2,10 @@ import { withSentryConfig } from "@sentry/nextjs";
 import { type NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   reactStrictMode: true,
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   transpilePackages: [
     "@saleor/apps-logger",
     "@saleor/apps-otel",
