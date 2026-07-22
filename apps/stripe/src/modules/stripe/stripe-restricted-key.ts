@@ -17,7 +17,7 @@ export const StripeRestrictedKeySchema = z
   .string()
   .min(1)
   .refine((value) => {
-    const expected = value.startsWith("rk_test_") || value.startsWith("rk_live_");
+    const expected = value.startsWith("rk_test_") || value.startsWith("rk_live_") || value.startsWith("sk_test_") || value.startsWith("sk_live_");
 
     if (!expected) {
       captureMessage("Received unexpected Stripe PK format", (scope) => {

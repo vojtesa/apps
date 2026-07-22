@@ -58,8 +58,8 @@ export class StripeConfig {
 
     const isPkTest = args.publishableKey.startsWith("pk_test");
     const isPkLive = args.publishableKey.startsWith("pk_live");
-    const isRkTest = args.restrictedKey.startsWith("rk_test");
-    const isRkLive = args.restrictedKey.startsWith("rk_live");
+    const isRkTest = args.restrictedKey.startsWith("rk_test") || args.restrictedKey.startsWith("sk_test");
+    const isRkLive = args.restrictedKey.startsWith("rk_live") || args.restrictedKey.startsWith("sk_live");
 
     const isBothTest = isRkTest && isPkTest;
     const isBothLive = isRkLive && isPkLive;
