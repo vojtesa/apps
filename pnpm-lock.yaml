@@ -45,7 +45,19 @@ catalogs:
     '@opentelemetry/api-logs':
       specifier: 0.57.2
       version: 0.57.2
+    '@opentelemetry/exporter-metrics-otlp-http':
+      specifier: 0.57.2
+      version: 0.57.2
+    '@opentelemetry/exporter-trace-otlp-http':
+      specifier: 0.57.2
+      version: 0.57.2
     '@opentelemetry/instrumentation':
+      specifier: 0.57.2
+      version: 0.57.2
+    '@opentelemetry/instrumentation-aws-sdk':
+      specifier: 0.52.0
+      version: 0.52.0
+    '@opentelemetry/instrumentation-http':
       specifier: 0.57.2
       version: 0.57.2
     '@opentelemetry/resources':
@@ -54,6 +66,9 @@ catalogs:
     '@opentelemetry/sdk-logs':
       specifier: 0.57.2
       version: 0.57.2
+    '@opentelemetry/sdk-metrics':
+      specifier: 1.30.1
+      version: 1.30.1
     '@opentelemetry/sdk-trace-node':
       specifier: 1.30.1
       version: 1.30.1
@@ -61,8 +76,8 @@ catalogs:
       specifier: 1.30.0
       version: 1.30.0
     '@saleor/app-sdk':
-      specifier: 'catalog:'
-      version: 1.8.0
+      specifier: 1.11.0
+      version: 1.11.0
     '@saleor/macaw-ui':
       specifier: 1.3.1
       version: 1.3.1
@@ -90,6 +105,9 @@ catalogs:
     '@types/node':
       specifier: 24.1.0
       version: 24.1.0
+    '@types/semver':
+      specifier: 7.7.1
+      version: 7.7.1
     '@vercel/oidc-aws-credentials-provider':
       specifier: 3.0.7
       version: 3.0.7
@@ -147,6 +165,9 @@ catalogs:
     react-hook-form:
       specifier: 7.43.9
       version: 7.43.9
+    semver:
+      specifier: 7.7.2
+      version: 7.7.2
     tsx:
       specifier: 4.19.3
       version: 4.19.3
@@ -171,6 +192,9 @@ catalogs:
     zod:
       specifier: 3.21.4
       version: 3.21.4
+    zod-validation-error:
+      specifier: 3.4.0
+      version: 3.4.0
 
 overrides:
   axios@<1.15.2: '>=1.15.2'
@@ -192,10 +216,13 @@ importers:
         version: 8.17.5
       '@saleor/app-sdk':
         specifier: 'catalog:'
-        version: 1.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(graphql@16.13.2)(next@15.5.18(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 1.11.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(dynamodb-toolbox@2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)))(graphql@16.7.1)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       cspell:
         specifier: 8.17.5
         version: 8.17.5
+      graphql:
+        specifier: 'catalog:'
+        version: 16.7.1
       husky:
         specifier: 9.1.4
         version: 9.1.4
@@ -258,7 +285,7 @@ importers:
         version: link:../../packages/app-problems
       '@saleor/app-sdk':
         specifier: 'catalog:'
-        version: 1.10.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(dynamodb-toolbox@2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)))(graphql@16.7.1)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 1.11.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(dynamodb-toolbox@2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)))(graphql@16.7.1)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@saleor/apps-logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -300,7 +327,7 @@ importers:
         version: 10.45.3(@trpc/server@10.45.3)
       '@trpc/next':
         specifier: 'catalog:'
-        version: 10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/react-query@10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.3)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/react-query@10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.3)(next@15.5.18(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/react-query':
         specifier: 'catalog:'
         version: 10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -463,7 +490,7 @@ importers:
     dependencies:
       '@saleor/app-sdk':
         specifier: 'catalog:'
-        version: 1.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(graphql@16.7.1)(next@15.5.18(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 1.11.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(dynamodb-toolbox@2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)))(graphql@16.7.1)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@saleor/errors':
         specifier: workspace:*
         version: link:../errors
@@ -668,7 +695,7 @@ importers:
         version: 9.23.0
       '@graphql-eslint/eslint-plugin':
         specifier: 4.4.0
-        version: 4.4.0(@types/node@25.6.0)(eslint@9.23.0(jiti@2.6.1))(graphql@16.13.2)(typescript@5.8.2)
+        version: 4.4.0(@types/node@25.6.0)(eslint@9.23.0(jiti@2.6.1))(graphql@16.7.1)(typescript@5.8.2)
       '@next/eslint-plugin-next':
         specifier: 15.5.15
         version: 15.5.15
@@ -687,6 +714,9 @@ importers:
       eslint-config-prettier:
         specifier: 10.1.1
         version: 10.1.1(eslint@9.23.0(jiti@2.6.1))
+      eslint-plugin-depend:
+        specifier: 1.5.0
+        version: 1.5.0(eslint@9.23.0(jiti@2.6.1))
       eslint-plugin-import:
         specifier: 2.31.0
         version: 2.31.0(@typescript-eslint/parser@8.53.1(eslint@9.23.0(jiti@2.6.1))(typescript@5.8.2))(eslint@9.23.0(jiti@2.6.1))
@@ -862,7 +892,7 @@ importers:
         version: 5.8.2
       urql:
         specifier: 'catalog:'
-        version: 4.0.4(graphql@16.13.2)(react@18.2.0)
+        version: 4.0.4(graphql@16.7.1)(react@18.2.0)
       vitest:
         specifier: 'catalog:'
         version: 3.1.1(@types/node@24.1.0)(jiti@2.6.1)(msw@2.10.2(@types/node@24.1.0)(typescript@5.8.2))(terser@5.46.2)(tsx@4.19.3)(yaml@2.8.4)
@@ -928,7 +958,7 @@ importers:
         version: link:../logger
       '@urql/exchange-auth':
         specifier: 2.1.4
-        version: 2.1.4(graphql@16.13.2)
+        version: 2.1.4(graphql@16.7.1)
       eslint:
         specifier: 'catalog:'
         version: 9.23.0(jiti@2.6.1)
@@ -937,7 +967,7 @@ importers:
         version: 7.7.2
       urql:
         specifier: 'catalog:'
-        version: 4.0.4(graphql@16.13.2)(react@18.2.0)
+        version: 4.0.4(graphql@16.7.1)(react@18.2.0)
     devDependencies:
       '@aws-sdk/lib-dynamodb':
         specifier: 'catalog:'
@@ -981,6 +1011,9 @@ importers:
       aws-sdk-client-mock:
         specifier: 4.0.1
         version: 4.0.1
+      graphql:
+        specifier: 'catalog:'
+        version: 16.7.1
       next:
         specifier: 'catalog:'
         version: 15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -3121,6 +3154,7 @@ packages:
   '@opentelemetry/propagation-utils@0.31.19':
     resolution: {integrity: sha512-HA4/VNA0tLxFgnc/BECcxyPEfy8rVJtsOX1WCSjvKDQaQK3ZGvu7/s1EtxPb904EPiohmv1qPSCDzZNTFEtkKg==}
     engines: {node: ^18.19.0 || >=20.6.0}
+    deprecated: The use of process spans has been removed from Messaging Semantic Conventions. It is now recommended to connect pub/sub spans via Span Links. See https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/ for details.
     peerDependencies:
       '@opentelemetry/api': ^1.0.0
 
@@ -3939,43 +3973,8 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@saleor/app-sdk@1.10.0':
-    resolution: {integrity: sha512-BUbh8PaTAdOAmqHSprpF9alzfXJ12a9Yy/2LyR13kBF3wg+qDy8VT/biD0o/EvN06B2soQ2iVeC79hbdMOPyrw==}
-    peerDependencies:
-      '@aws-sdk/client-dynamodb': ^3.848.0
-      '@aws-sdk/lib-dynamodb': ^3.850.0
-      '@aws-sdk/util-dynamodb': ^3.848.0
-      '@vercel/kv': ^1.0.0
-      dynamodb-toolbox: '>2'
-      graphql: '>=16.6.0'
-      next: '>=12'
-      react: '>=17'
-      react-dom: '>=17'
-      redis: '>=4'
-    peerDependenciesMeta:
-      '@aws-sdk/client-dynamodb':
-        optional: true
-      '@aws-sdk/lib-dynamodb':
-        optional: true
-      '@aws-sdk/util-dynamodb':
-        optional: true
-      '@vercel/kv':
-        optional: true
-      dynamodb-toolbox:
-        optional: true
-      graphql:
-        optional: true
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      redis:
-        optional: true
-
-  '@saleor/app-sdk@1.8.0':
-    resolution: {integrity: sha512-Sp6yNTtH0wIdpXk5sbElIGlW8GQUGOJZn82A7S66pOFaPw9h71NEM9KJ2I2EqTQ7kuMcUe19reTiP5wI+/ZRJQ==}
+  '@saleor/app-sdk@1.11.0':
+    resolution: {integrity: sha512-JaGciedF69sahwsO1MtDuBRRktcgiLYFBshEg9KNAu39gctuzNP5dbndngmjqYLd91cLt9hmssGozYrIvblcLQ==}
     peerDependencies:
       '@aws-sdk/client-dynamodb': ^3.848.0
       '@aws-sdk/lib-dynamodb': ^3.850.0
@@ -5750,6 +5749,10 @@ packages:
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
 
+  empathic@2.0.1:
+    resolution: {integrity: sha512-YGRs8knHhKHVShLkFET/rWAU8kmHbOV5LwN938RHI0pljAJ1Gf6SzXsSmRaEzcXTtOOmVqJ5+WtQPL5uigY50Q==}
+    engines: {node: '>=14'}
+
   enhanced-resolve@5.21.0:
     resolution: {integrity: sha512-otxSQPw4lkOZWkHpB3zaEQs6gWYEsmX4xQF68ElXC/TWvGxGMSGOvoNbaLXm6/cS/fSfHtsEdw90y20PCd+sCA==}
     engines: {node: '>=10.13.0'}
@@ -5879,6 +5882,11 @@ packages:
         optional: true
       eslint-import-resolver-webpack:
         optional: true
+
+  eslint-plugin-depend@1.5.0:
+    resolution: {integrity: sha512-i3UeLYmclf1Icp35+6W7CR4Bp2PIpDgBuf/mpmXK5UeLkZlvYJ21VuQKKHHAIBKRTPivPGX/gZl5JGno1o9Y0A==}
+    peerDependencies:
+      eslint: '>=8.40.0'
 
   eslint-plugin-es-x@7.8.0:
     resolution: {integrity: sha512-7Ds8+wAAoV3T+LAKeu39Y5BzXCrGKrcISfgKEqTS4BDN8SFEDQd0S43jiQ8vIa3wUKD07qitZdfzlenSi8/0qQ==}
@@ -7249,6 +7257,9 @@ packages:
 
   module-details-from-path@1.0.4:
     resolution: {integrity: sha512-EGWKgxALGMgzvxYF1UyGTy0HXX/2vHLkw6+NvDKW2jypWbHpjQuj4UMcqQWXHERJhVGKikolT06G3bcKe4fi7w==}
+
+  module-replacements@2.11.0:
+    resolution: {integrity: sha512-j5sNQm3VCpQQ7nTqGeOZtoJtV3uKERgCBm9QRhmGRiXiqkf7iRFOkfxdJRZWLkqYY8PNf4cDQF/WfXUYLENrRA==}
 
   moment@2.30.1:
     resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
@@ -9052,10 +9063,6 @@ packages:
 
 snapshots:
 
-  '@0no-co/graphql.web@1.2.0(graphql@16.13.2)':
-    optionalDependencies:
-      graphql: 16.13.2
-
   '@0no-co/graphql.web@1.2.0(graphql@16.7.1)':
     optionalDependencies:
       graphql: 16.7.1
@@ -10765,17 +10772,17 @@ snapshots:
       parse-filepath: 1.0.2
       tslib: 2.6.3
 
-  '@graphql-eslint/eslint-plugin@4.4.0(@types/node@25.6.0)(eslint@9.23.0(jiti@2.6.1))(graphql@16.13.2)(typescript@5.8.2)':
+  '@graphql-eslint/eslint-plugin@4.4.0(@types/node@25.6.0)(eslint@9.23.0(jiti@2.6.1))(graphql@16.7.1)(typescript@5.8.2)':
     dependencies:
-      '@graphql-tools/code-file-loader': 8.1.32(graphql@16.13.2)
-      '@graphql-tools/graphql-tag-pluck': 8.3.31(graphql@16.13.2)
-      '@graphql-tools/utils': 10.11.0(graphql@16.13.2)
+      '@graphql-tools/code-file-loader': 8.1.32(graphql@16.7.1)
+      '@graphql-tools/graphql-tag-pluck': 8.3.31(graphql@16.7.1)
+      '@graphql-tools/utils': 10.11.0(graphql@16.7.1)
       debug: 4.4.3
       eslint: 9.23.0(jiti@2.6.1)
       fast-glob: 3.3.3
-      graphql: 16.13.2
-      graphql-config: 5.1.6(@types/node@25.6.0)(graphql@16.13.2)(typescript@5.8.2)
-      graphql-depth-limit: 1.1.0(graphql@16.13.2)
+      graphql: 16.7.1
+      graphql-config: 5.1.6(@types/node@25.6.0)(graphql@16.7.1)(typescript@5.8.2)
+      graphql-depth-limit: 1.1.0(graphql@16.7.1)
       lodash.lowercase: 4.3.0
     transitivePeerDependencies:
       - '@fastify/websocket'
@@ -10799,12 +10806,12 @@ snapshots:
       sync-fetch: 0.6.0
       tslib: 2.8.1
 
-  '@graphql-tools/batch-execute@10.0.8(graphql@16.13.2)':
+  '@graphql-tools/batch-execute@10.0.8(graphql@16.7.1)':
     dependencies:
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       '@whatwg-node/promise-helpers': 1.3.2
       dataloader: 2.2.3
-      graphql: 16.13.2
+      graphql: 16.7.1
       tslib: 2.8.1
 
   '@graphql-tools/batch-execute@9.0.19(graphql@16.7.1)':
@@ -10814,17 +10821,6 @@ snapshots:
       dataloader: 2.2.3
       graphql: 16.7.1
       tslib: 2.8.1
-
-  '@graphql-tools/code-file-loader@8.1.32(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/graphql-tag-pluck': 8.3.31(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      globby: 11.1.0
-      graphql: 16.13.2
-      tslib: 2.8.1
-      unixify: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@graphql-tools/code-file-loader@8.1.32(graphql@16.7.1)':
     dependencies:
@@ -10850,16 +10846,16 @@ snapshots:
       graphql: 16.7.1
       tslib: 2.8.1
 
-  '@graphql-tools/delegate@12.0.15(graphql@16.13.2)':
+  '@graphql-tools/delegate@12.0.15(graphql@16.7.1)':
     dependencies:
-      '@graphql-tools/batch-execute': 10.0.8(graphql@16.13.2)
-      '@graphql-tools/executor': 1.5.3(graphql@16.13.2)
-      '@graphql-tools/schema': 10.0.33(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
+      '@graphql-tools/batch-execute': 10.0.8(graphql@16.7.1)
+      '@graphql-tools/executor': 1.5.3(graphql@16.7.1)
+      '@graphql-tools/schema': 10.0.33(graphql@16.7.1)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       '@repeaterjs/repeater': 3.0.6
       '@whatwg-node/promise-helpers': 1.3.2
       dataloader: 2.2.3
-      graphql: 16.13.2
+      graphql: 16.7.1
       tslib: 2.8.1
 
   '@graphql-tools/documents@1.0.1(graphql@16.7.1)':
@@ -10880,11 +10876,11 @@ snapshots:
       '@graphql-tools/utils': 10.11.0(graphql@16.7.1)
       graphql: 16.7.1
 
-  '@graphql-tools/executor-common@1.0.6(graphql@16.13.2)':
+  '@graphql-tools/executor-common@1.0.6(graphql@16.7.1)':
     dependencies:
       '@envelop/core': 5.5.1
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      graphql: 16.13.2
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
+      graphql: 16.7.1
 
   '@graphql-tools/executor-graphql-ws@2.0.7(graphql@16.7.1)':
     dependencies:
@@ -10902,13 +10898,13 @@ snapshots:
       - crossws
       - utf-8-validate
 
-  '@graphql-tools/executor-graphql-ws@3.1.5(graphql@16.13.2)':
+  '@graphql-tools/executor-graphql-ws@3.1.5(graphql@16.7.1)':
     dependencies:
-      '@graphql-tools/executor-common': 1.0.6(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
+      '@graphql-tools/executor-common': 1.0.6(graphql@16.7.1)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       '@whatwg-node/disposablestack': 0.0.6
-      graphql: 16.13.2
-      graphql-ws: 6.0.8(graphql@16.13.2)(ws@8.20.0)
+      graphql: 16.7.1
+      graphql-ws: 6.0.8(graphql@16.7.1)(ws@8.20.0)
       isows: 1.0.7(ws@8.20.0)
       tslib: 2.8.1
       ws: 8.20.0
@@ -10948,32 +10944,20 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@graphql-tools/executor-http@3.2.1(@types/node@25.6.0)(graphql@16.13.2)':
+  '@graphql-tools/executor-http@3.2.1(@types/node@25.6.0)(graphql@16.7.1)':
     dependencies:
       '@graphql-hive/signal': 2.0.0
-      '@graphql-tools/executor-common': 1.0.6(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
+      '@graphql-tools/executor-common': 1.0.6(graphql@16.7.1)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       '@repeaterjs/repeater': 3.0.6
       '@whatwg-node/disposablestack': 0.0.6
       '@whatwg-node/fetch': 0.10.13
       '@whatwg-node/promise-helpers': 1.3.2
-      graphql: 16.13.2
+      graphql: 16.7.1
       meros: 1.3.2(@types/node@25.6.0)
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@types/node'
-
-  '@graphql-tools/executor-legacy-ws@1.1.28(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      '@types/ws': 8.18.1
-      graphql: 16.13.2
-      isomorphic-ws: 5.0.0(ws@8.20.0)
-      tslib: 2.8.1
-      ws: 8.20.0
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
   '@graphql-tools/executor-legacy-ws@1.1.28(graphql@16.7.1)':
     dependencies:
@@ -10986,16 +10970,6 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-
-  '@graphql-tools/executor@1.5.3(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      '@graphql-typed-document-node/core': 3.2.0(graphql@16.13.2)
-      '@repeaterjs/repeater': 3.0.6
-      '@whatwg-node/disposablestack': 0.0.6
-      '@whatwg-node/promise-helpers': 1.3.2
-      graphql: 16.13.2
-      tslib: 2.8.1
 
   '@graphql-tools/executor@1.5.3(graphql@16.7.1)':
     dependencies:
@@ -11047,15 +11021,6 @@ snapshots:
       - '@types/node'
       - supports-color
 
-  '@graphql-tools/graphql-file-loader@8.1.14(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/import': 7.1.14(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      globby: 11.1.0
-      graphql: 16.13.2
-      tslib: 2.8.1
-      unixify: 1.0.0
-
   '@graphql-tools/graphql-file-loader@8.1.14(graphql@16.7.1)':
     dependencies:
       '@graphql-tools/import': 7.1.14(graphql@16.7.1)
@@ -11064,19 +11029,6 @@ snapshots:
       graphql: 16.7.1
       tslib: 2.8.1
       unixify: 1.0.0
-
-  '@graphql-tools/graphql-tag-pluck@8.3.31(graphql@16.13.2)':
-    dependencies:
-      '@babel/core': 7.29.0
-      '@babel/parser': 7.29.3
-      '@babel/plugin-syntax-import-assertions': 7.28.6(@babel/core@7.29.0)
-      '@babel/traverse': 7.29.0
-      '@babel/types': 7.29.0
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      graphql: 16.13.2
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@graphql-tools/graphql-tag-pluck@8.3.31(graphql@16.7.1)':
     dependencies:
@@ -11091,27 +11043,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@graphql-tools/import@7.1.14(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      graphql: 16.13.2
-      resolve-from: 5.0.0
-      tslib: 2.8.1
-
   '@graphql-tools/import@7.1.14(graphql@16.7.1)':
     dependencies:
       '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       graphql: 16.7.1
       resolve-from: 5.0.0
       tslib: 2.8.1
-
-  '@graphql-tools/json-file-loader@8.0.28(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      globby: 11.1.0
-      graphql: 16.13.2
-      tslib: 2.8.1
-      unixify: 1.0.0
 
   '@graphql-tools/json-file-loader@8.0.28(graphql@16.7.1)':
     dependencies:
@@ -11121,26 +11058,12 @@ snapshots:
       tslib: 2.8.1
       unixify: 1.0.0
 
-  '@graphql-tools/load@8.1.10(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/schema': 10.0.33(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      graphql: 16.13.2
-      p-limit: 3.1.0
-      tslib: 2.8.1
-
   '@graphql-tools/load@8.1.10(graphql@16.7.1)':
     dependencies:
       '@graphql-tools/schema': 10.0.33(graphql@16.7.1)
       '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       graphql: 16.7.1
       p-limit: 3.1.0
-      tslib: 2.8.1
-
-  '@graphql-tools/merge@9.1.9(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      graphql: 16.13.2
       tslib: 2.8.1
 
   '@graphql-tools/merge@9.1.9(graphql@16.7.1)':
@@ -11232,13 +11155,6 @@ snapshots:
       graphql: 16.7.1
       tslib: 2.6.3
 
-  '@graphql-tools/schema@10.0.33(graphql@16.13.2)':
-    dependencies:
-      '@graphql-tools/merge': 9.1.9(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      graphql: 16.13.2
-      tslib: 2.8.1
-
   '@graphql-tools/schema@10.0.33(graphql@16.7.1)':
     dependencies:
       '@graphql-tools/merge': 9.1.9(graphql@16.7.1)
@@ -11290,17 +11206,17 @@ snapshots:
       - crossws
       - utf-8-validate
 
-  '@graphql-tools/url-loader@9.1.2(@types/node@25.6.0)(graphql@16.13.2)':
+  '@graphql-tools/url-loader@9.1.2(@types/node@25.6.0)(graphql@16.7.1)':
     dependencies:
-      '@graphql-tools/executor-graphql-ws': 3.1.5(graphql@16.13.2)
-      '@graphql-tools/executor-http': 3.2.1(@types/node@25.6.0)(graphql@16.13.2)
-      '@graphql-tools/executor-legacy-ws': 1.1.28(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
-      '@graphql-tools/wrap': 11.1.14(graphql@16.13.2)
+      '@graphql-tools/executor-graphql-ws': 3.1.5(graphql@16.7.1)
+      '@graphql-tools/executor-http': 3.2.1(@types/node@25.6.0)(graphql@16.7.1)
+      '@graphql-tools/executor-legacy-ws': 1.1.28(graphql@16.7.1)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
+      '@graphql-tools/wrap': 11.1.14(graphql@16.7.1)
       '@types/ws': 8.18.1
       '@whatwg-node/fetch': 0.10.13
       '@whatwg-node/promise-helpers': 1.3.2
-      graphql: 16.13.2
+      graphql: 16.7.1
       isomorphic-ws: 5.0.0(ws@8.20.0)
       sync-fetch: 0.6.0
       tslib: 2.8.1
@@ -11312,28 +11228,12 @@ snapshots:
       - crossws
       - utf-8-validate
 
-  '@graphql-tools/utils@10.11.0(graphql@16.13.2)':
-    dependencies:
-      '@graphql-typed-document-node/core': 3.2.0(graphql@16.13.2)
-      '@whatwg-node/promise-helpers': 1.3.2
-      cross-inspect: 1.0.1
-      graphql: 16.13.2
-      tslib: 2.8.1
-
   '@graphql-tools/utils@10.11.0(graphql@16.7.1)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.7.1)
       '@whatwg-node/promise-helpers': 1.3.2
       cross-inspect: 1.0.1
       graphql: 16.7.1
-      tslib: 2.8.1
-
-  '@graphql-tools/utils@11.1.0(graphql@16.13.2)':
-    dependencies:
-      '@graphql-typed-document-node/core': 3.2.0(graphql@16.13.2)
-      '@whatwg-node/promise-helpers': 1.3.2
-      cross-inspect: 1.0.1
-      graphql: 16.13.2
       tslib: 2.8.1
 
   '@graphql-tools/utils@11.1.0(graphql@16.7.1)':
@@ -11364,18 +11264,14 @@ snapshots:
       graphql: 16.7.1
       tslib: 2.8.1
 
-  '@graphql-tools/wrap@11.1.14(graphql@16.13.2)':
+  '@graphql-tools/wrap@11.1.14(graphql@16.7.1)':
     dependencies:
-      '@graphql-tools/delegate': 12.0.15(graphql@16.13.2)
-      '@graphql-tools/schema': 10.0.33(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
+      '@graphql-tools/delegate': 12.0.15(graphql@16.7.1)
+      '@graphql-tools/schema': 10.0.33(graphql@16.7.1)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       '@whatwg-node/promise-helpers': 1.3.2
-      graphql: 16.13.2
+      graphql: 16.7.1
       tslib: 2.8.1
-
-  '@graphql-typed-document-node/core@3.2.0(graphql@16.13.2)':
-    dependencies:
-      graphql: 16.13.2
 
   '@graphql-typed-document-node/core@3.2.0(graphql@16.7.1)':
     dependencies:
@@ -12688,7 +12584,7 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@saleor/app-sdk@1.10.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(dynamodb-toolbox@2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)))(graphql@16.7.1)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@saleor/app-sdk@1.11.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(dynamodb-toolbox@2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)))(graphql@16.7.1)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/semantic-conventions': 1.30.0
@@ -12700,42 +12596,6 @@ snapshots:
       '@aws-sdk/lib-dynamodb': 3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)
       '@aws-sdk/util-dynamodb': 3.996.2(@aws-sdk/client-dynamodb@3.1004.0)
       dynamodb-toolbox: 2.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))
-      graphql: 16.7.1
-      next: 15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@saleor/app-sdk@1.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(graphql@16.13.2)(next@15.5.18(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@opentelemetry/api': 1.9.0
-      '@opentelemetry/semantic-conventions': 1.30.0
-      debug: 4.4.0
-      jose: 5.10.0
-      raw-body: 3.0.0
-    optionalDependencies:
-      '@aws-sdk/client-dynamodb': 3.1004.0
-      '@aws-sdk/lib-dynamodb': 3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)
-      '@aws-sdk/util-dynamodb': 3.996.2(@aws-sdk/client-dynamodb@3.1004.0)
-      graphql: 16.13.2
-      next: 15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@saleor/app-sdk@1.8.0(@aws-sdk/client-dynamodb@3.1004.0)(@aws-sdk/lib-dynamodb@3.1004.0(@aws-sdk/client-dynamodb@3.1004.0))(@aws-sdk/util-dynamodb@3.996.2(@aws-sdk/client-dynamodb@3.1004.0))(graphql@16.7.1)(next@15.5.18(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@opentelemetry/api': 1.9.0
-      '@opentelemetry/semantic-conventions': 1.30.0
-      debug: 4.4.0
-      jose: 5.10.0
-      raw-body: 3.0.0
-    optionalDependencies:
-      '@aws-sdk/client-dynamodb': 3.1004.0
-      '@aws-sdk/lib-dynamodb': 3.1004.0(@aws-sdk/client-dynamodb@3.1004.0)
-      '@aws-sdk/util-dynamodb': 3.996.2(@aws-sdk/client-dynamodb@3.1004.0)
       graphql: 16.7.1
       next: 15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -13393,16 +13253,6 @@ snapshots:
     dependencies:
       '@trpc/server': 10.45.3
 
-  '@trpc/next@10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/react-query@10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.3)(next@15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@tanstack/react-query': 4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@trpc/client': 10.45.3(@trpc/server@10.45.3)
-      '@trpc/react-query': 10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@trpc/server': 10.45.3
-      next: 15.5.18(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-
   '@trpc/next@10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/react-query@10.45.3(@tanstack/react-query@4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.3(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.3)(next@15.5.18(@opentelemetry/api@1.9.0)(@playwright/test@1.52.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tanstack/react-query': 4.44.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -13692,13 +13542,6 @@ snapshots:
       '@typescript-eslint/types': 8.59.2
       eslint-visitor-keys: 5.0.1
 
-  '@urql/core@4.3.0(graphql@16.13.2)':
-    dependencies:
-      '@0no-co/graphql.web': 1.2.0(graphql@16.13.2)
-      wonka: 6.3.6
-    transitivePeerDependencies:
-      - graphql
-
   '@urql/core@4.3.0(graphql@16.7.1)':
     dependencies:
       '@0no-co/graphql.web': 1.2.0(graphql@16.7.1)
@@ -13706,16 +13549,16 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
-  '@urql/core@6.0.1(graphql@16.13.2)':
+  '@urql/core@6.0.1(graphql@16.7.1)':
     dependencies:
-      '@0no-co/graphql.web': 1.2.0(graphql@16.13.2)
+      '@0no-co/graphql.web': 1.2.0(graphql@16.7.1)
       wonka: 6.3.6
     transitivePeerDependencies:
       - graphql
 
-  '@urql/exchange-auth@2.1.4(graphql@16.13.2)':
+  '@urql/exchange-auth@2.1.4(graphql@16.7.1)':
     dependencies:
-      '@urql/core': 6.0.1(graphql@16.13.2)
+      '@urql/core': 6.0.1(graphql@16.7.1)
       wonka: 6.3.6
     transitivePeerDependencies:
       - graphql
@@ -15040,6 +14883,8 @@ snapshots:
 
   emoji-regex@9.2.2: {}
 
+  empathic@2.0.1: {}
+
   enhanced-resolve@5.21.0:
     dependencies:
       graceful-fs: 4.2.11
@@ -15247,6 +15092,13 @@ snapshots:
       eslint-import-resolver-node: 0.3.10
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-depend@1.5.0(eslint@9.23.0(jiti@2.6.1)):
+    dependencies:
+      empathic: 2.0.1
+      eslint: 9.23.0(jiti@2.6.1)
+      module-replacements: 2.11.0
+      semver: 7.7.4
 
   eslint-plugin-es-x@7.8.0(eslint@9.23.0(jiti@2.6.1)):
     dependencies:
@@ -15859,16 +15711,16 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  graphql-config@5.1.6(@types/node@25.6.0)(graphql@16.13.2)(typescript@5.8.2):
+  graphql-config@5.1.6(@types/node@25.6.0)(graphql@16.7.1)(typescript@5.8.2):
     dependencies:
-      '@graphql-tools/graphql-file-loader': 8.1.14(graphql@16.13.2)
-      '@graphql-tools/json-file-loader': 8.0.28(graphql@16.13.2)
-      '@graphql-tools/load': 8.1.10(graphql@16.13.2)
-      '@graphql-tools/merge': 9.1.9(graphql@16.13.2)
-      '@graphql-tools/url-loader': 9.1.2(@types/node@25.6.0)(graphql@16.13.2)
-      '@graphql-tools/utils': 11.1.0(graphql@16.13.2)
+      '@graphql-tools/graphql-file-loader': 8.1.14(graphql@16.7.1)
+      '@graphql-tools/json-file-loader': 8.0.28(graphql@16.7.1)
+      '@graphql-tools/load': 8.1.10(graphql@16.7.1)
+      '@graphql-tools/merge': 9.1.9(graphql@16.7.1)
+      '@graphql-tools/url-loader': 9.1.2(@types/node@25.6.0)(graphql@16.7.1)
+      '@graphql-tools/utils': 11.1.0(graphql@16.7.1)
       cosmiconfig: 8.3.6(typescript@5.8.2)
-      graphql: 16.13.2
+      graphql: 16.7.1
       jiti: 2.6.1
       minimatch: 10.2.5
       string-env-interpolation: 1.0.1
@@ -15881,10 +15733,10 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  graphql-depth-limit@1.1.0(graphql@16.13.2):
+  graphql-depth-limit@1.1.0(graphql@16.7.1):
     dependencies:
       arrify: 1.0.1
-      graphql: 16.13.2
+      graphql: 16.7.1
 
   graphql-request@6.1.0(graphql@16.7.1):
     dependencies:
@@ -15898,12 +15750,6 @@ snapshots:
     dependencies:
       graphql: 16.7.1
       tslib: 2.8.1
-
-  graphql-ws@6.0.8(graphql@16.13.2)(ws@8.20.0):
-    dependencies:
-      graphql: 16.13.2
-    optionalDependencies:
-      ws: 8.20.0
 
   graphql-ws@6.0.8(graphql@16.7.1)(ws@8.20.0):
     dependencies:
@@ -16739,7 +16585,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.4
 
   map-cache@0.2.2: {}
 
@@ -16865,6 +16711,8 @@ snapshots:
       set-error-stack: 3.0.1
 
   module-details-from-path@1.0.4: {}
+
+  module-replacements@2.11.0: {}
 
   moment@2.30.1: {}
 
@@ -17355,7 +17203,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.1
-      '@types/node': 24.1.0
+      '@types/node': 25.6.0
       long: 5.3.2
 
   proxy-from-env@1.1.0: {}
@@ -18457,14 +18305,6 @@ snapshots:
   urlpattern-polyfill@10.1.0: {}
 
   urlpattern-polyfill@8.0.2: {}
-
-  urql@4.0.4(graphql@16.13.2)(react@18.2.0):
-    dependencies:
-      '@urql/core': 4.3.0(graphql@16.13.2)
-      react: 18.2.0
-      wonka: 6.3.6
-    transitivePeerDependencies:
-      - graphql
 
   urql@4.0.4(graphql@16.7.1)(react@18.2.0):
     dependencies:
